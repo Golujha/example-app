@@ -21,32 +21,27 @@
                             <th>duration</th>
                             <th>fees</th>
                             <th>action</th>
-                            <th>action</th>
-                            <th>action</th>
                         </tr>
-                        @foreach ($courses as $course)
+                        @foreach ($courses as $item)
                         <tr>
                             
-                            <td>{{ $course->title }}</td>
-                            <td>{{ $course->duration }}</td>
-                            <td>{{ $course->price }} </td>
-                            <td>{{ $course->discount_price }} </td>
-                            <td>{{ $course->description }}</td>
-                            <td>{{$course->status}}</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->title}}</td>
+                            <td>{{ $item->duration }}</td>
+                            <td><del>{{$item->price}}</del></td>
+                            {{$item->discount_price}}
+                            
                             <td>
-                                <img width="90px" src="{{ asset("product_image/".$course->image) }}" alt="">
-                            </td>
-                            <td>
-                                <form action="{{route('course.destroy',['course'=>$course])}}" method="POST">
+                                <form action="{{route('course.destroy',$item)}}" method="POST">
                                     @method("delete")
                                     @csrf
                                     <input type="submit" class="btn btn-danger" value="delete">
-                                    <a href="{{route('course.edit',['course'=>$course->id])}}" class="btn btn-info">Edit</a>
+                                    <a href="{{route("course.edit",$item)}}" class="btn btn-info">Edit</a>
 
                                 </form>
                             </td>
                         </tr>
-                    @endforeach
+                        @endforeach
                     </table>
                 </div>
             </div>

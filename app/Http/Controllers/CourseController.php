@@ -15,7 +15,7 @@ class CourseController extends Controller
     public function index()
     
     {   
-        $data = ['courses' => Course::all()];
+        $data['courses'] = Course::all();
         return view("admin.manageCourse",$data);
 
 
@@ -45,32 +45,26 @@ class CourseController extends Controller
         //
         $request->validate([
             'title' => 'required',
+            'duration' => 'required',
             'price' => 'required',
             'discount_price' => 'required',
-            'duration' => 'required',
-            'image' => 'required',
             'description' => 'required',
-
+            'image' => 'required',
         ]);
-        $course = new Course();
-        $course->title = $request->title;
-        $course->duration = $request->duration;
-        $course->price = $request->price;
-        $course->discount_price = $request->discount_price;
-        $course->description = $request->description;
+
+        $data = new Course();
+        $file = $request->image->getClientOriginalName();
         
-        $file  = $request->image;
-        $fileName = $file->getClientOriginalName();
-        $file->move("product_image", $fileName);
-        $course->image = $fileName;
-        $course->save();
+        $data->title = $request->title;
+        $data->duration = $request->duration;
+        $data->price = $request->price;
+        $data->discount_price = $request->discount_price;
+        $data->description = $request->description;
+        $request->image->move(public_path("course_images"), $file);
+        $data->image = $file;
+        $data->save();
+
         return redirect()->route('course.index');
-    }
-    public function addCourse(){
-        $data = [
-            'courses' => Course::all(),
-        ];
-        return view("admin.addCourse",$data);
     }
 
     /**
@@ -94,7 +88,7 @@ class CourseController extends Controller
     {
         //
         $data['course'] = $course;
-        return view("admin/editCourse",$data);
+        return view("admin.editCourse",$data);
     }
 
     /**
@@ -109,24 +103,23 @@ class CourseController extends Controller
         //
         $request->validate([
             'title' => 'required',
+            'duration' => 'required',
             'price' => 'required',
             'discount_price' => 'required',
-            'duration' => 'required',
-            'image' => 'required',
             'description' => 'required',
-
         ]);
-        $course->title = $request->title;
-        $course->duration = $request->duration;
-        $course->price = $request->price;
-        $course->discount_price = $request->discount_price;
-        $course->description = $request->description;
-        
-        $file  = $request->image;
-        $fileName = $file->getClientOriginalName();
-        $file->move("product_image", $fileName);
-        $course->image = $fileName;
-        $course->save();
+
+        // $file = $request->image->getClientOriginalName();
+        $data = $course;
+        $data->title = $request->title;
+        $data->duration = $request->duration;
+        $data->price = $request->price;
+        $data->discount_price = $request->discount_price;
+        $data->description = $request->description;
+        // $request->image->move(public_path("course_images"), $file);
+        // $data->image = $file;
+        $data->save();
+
         return redirect()->route('course.index');
     }
 

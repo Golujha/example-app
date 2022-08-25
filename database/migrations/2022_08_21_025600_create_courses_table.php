@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text("description");
             $table->float("price");
             $table->float("discount_price")->nullable();
-            $table->enum("status",['1','0'])->default("1");
+            $table->boolean("status")->default(true);
             $table->timestamps();
         });
     }

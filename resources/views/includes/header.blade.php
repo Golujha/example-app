@@ -10,9 +10,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 <body>
-    <div class="navbar navbar-expand-lg navbar-white bg-white shadow-lg">
+    <div class="navbar navbar-expand-lg navbar-white bg-white shadow-lg py-3">
         <div class="container">
-            <a href="{{ route('homepage') }}" class="navbar-brand" style="font-size: 27px;"><u>School-Portal</u></a>
+            <a href="" class="navbar-brand" style="font-size: 27px;"><u>School-Portal</u></a>
 
             <form action="" class="d-flex mx-auto">
                 <input type="search"  class="form-control" size="50" autofocus>

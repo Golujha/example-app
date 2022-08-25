@@ -1,7 +1,6 @@
 @extends('base')
 
 @section('content')
-@section('title',$title);
 
 <div class="container-fluid">
     <div class="row">
@@ -25,68 +24,28 @@
 </div>
 <div class="container-fluid mt-4">
     <div class="row">
+        @foreach ($courses as $item)
         <div class="col-2 g-9">
             <div class="card">
-                <img src="https://codewithsadiq.com/public/images/course/1639915439.jpg" alt="">
-                <h6 class="fw-bold mt-3">python with data structure</h6>
-                <a href="" class="btn btn-success mt-2">Duration 4 months</a>
+                <img src="{{asset("course_images/".$item->image)}}" class="w-100" style="object-fit: cover;height:220px" alt="">
+                <a href="{{route('view',$item->id)}}"><h6 class="text-truncate">{{$item->title}}</h6></a>
+                <a href="" class="btn btn-success mt-2">{{ $item->Duration}}Duration 4 months</a>
             </div>
         </div>
-        <div class="col-2  ">
-            <div class="card">
-                <img src="https://codewithsadiq.com/public/images/course/1639916039.jpg" alt="">
-                <h6 class="fw-bold mt-3">python with data structure</h6>
-                <a href="" class="btn btn-success mt-2">Duration 4 months</a>
-            </div>
-        </div>
-        <div class="col-2 ">
-            <div class="card">
-                <img src="https://codewithsadiq.com/public/images/course/1639911906.jpg" alt="">
-                <h6 class="fw-bold mt-3">python with data structure</h6>
-                <a href="" class="btn btn-success mt-2">Duration 4 months</a>
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="card">
-                <img src="https://codewithsadiq.com/public/images/course/1639911906.jpg" alt="">
-                <h6 class="fw-bold mt-3">python with data structure</h6>
-                <a href="" class="btn btn-success mt-2">Duration 4 months</a>
-            </div>
-        </div>
-        <div class="col-2 ">
-            <div class="card">
-                <img src="https://codewithsadiq.com/public/images/course/1639911906.jpg" alt="">
-                <h6 class="fw-bold mt-3">python with data structure</h6>
-                <a href="" class="btn btn-success mt-2">Duration 4 months</a>
-            </div>
-        </div>
-        <div class="col-2 ">
-            <div class="card">
-                <img src="https://codewithsadiq.com/public/images/course/1639911906.jpg" alt="">
-                <h6 class="fw-bold mt-3">python with data structure</h6>
-                <a href="" class="btn btn-success mt-2">Duration 4 months</a>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
+
 <div class="container mt-5">
     <div class="row">
         <div class="col-12">
             <div class="row">
-                @foreach ($courses as $item)
                 <div class="col-2">
                     <div class="card">
-                        <img src="{{ asset("product_image/".$item->image) }}" class="w-100" style="object-fit: cover;height:220px" alt="">
-                        <h6 class="small fw-bold text-center mt-1">{{ $item->title}}Manisha Kumari</h6>
-                        <h6 class="fw-bold text-center  ">{{ $item->description}}Software Developer</h6>
-                        <p class="text-center">HCL india @pune{{ $item->price}}</p>
-                    </div>
-                </div>
-                    
-                @endforeach
-                <div class="row">
-                    <div class="col mx-auto">
-                        {{$courses->links()}}
+                        <img src="https://thumbs.dreamstime.com/z/portrait-cute-adorable-little-caucasian-school-girl-wearing-uniform-flowers-bouquet-going-back-to-199691293.jpg" alt="" style="height: 200px;width:195px;object-fit-cover" >
+                        <h6 class="small fw-bold text-center mt-1">Manisha Kumari</h6>
+                        <h6 class="fw-bold text-center  ">Software Developer</h6>
+                        <p class="text-center">HCL india @pune</p>
                     </div>
                 </div>
             </div>

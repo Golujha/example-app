@@ -8,7 +8,7 @@
         
         <div class="col-9">
             <div class="card">
-                <form action="{{route("course.store")}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('course.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                         <div class="row">
                         <div class="mb-3 col">

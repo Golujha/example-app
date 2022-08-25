@@ -12,7 +12,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{route('course.update',['course'=>$course])}}" method="POST">
+                                <form action="{{route('course.update',$course)}}" method="POST" enctype="multipart/form-data">
                                     @method("put")
                                     @csrf
                                     <div class="mb-3">
@@ -48,14 +48,7 @@
                                         <input type="text" name="description" value="{{$course->description}}" class="form-control">
                                         @error('description')
                                         <p class="text-danger small">{{$message}}</p>
-                                    @enderror
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="">image</label>
-                                        <input type="file" value="{{$course->image}}" name="image" class="form-control">
-                                        @error('image')
-                                        <p class="text-danger small">{{$message}}</p>
-                                    @enderror
+                                        @enderror
                                     </div>
                                    
                                     <div class="mb-3">
